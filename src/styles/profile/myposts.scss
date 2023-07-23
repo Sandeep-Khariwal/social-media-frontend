@@ -1,0 +1,68 @@
+.myallposts{
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    >.myposts{
+        width: 80%;
+        // height: 20%;
+        padding-top: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+     >.posts{
+        width: 50%;
+        height: 100%;
+
+        overflow-y: scroll;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+     }
+    }
+
+    >.navbar{
+        width: 100%;
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .myallposts>.myposts>.posts{
+        width: 60%;
+    }
+}
+@media screen and (max-width:750px) {
+    .myallposts>.myposts>.posts{
+        width: 80%;
+    }
+}
+@media screen and (max-width:550px) {
+    .myallposts>.myposts>.posts{
+        width: 90%;
+    }
+}
+@media screen and (max-width:450px) {
+    .myallposts>.myposts>.posts{
+        width: 100%;
+    }
+}
+@media screen and (max-width:400px) {
+    .myallposts>.myposts{
+        width: 100%;
+    >.posts{
+        width: 95%;
+    }
+    }
+}

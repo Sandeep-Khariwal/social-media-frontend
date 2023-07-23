@@ -1,0 +1,53 @@
+.postComments{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border: 2px solid grey;
+    border-radius: 0.4rem;
+    margin: 1rem;
+    padding: 0.2rem 0.5rem 0.5rem 0.2rem;
+    background-color:#FAF9F6;
+    box-shadow: 2px 2px 5px 0.5px;
+    >.profile{
+        width: 30%;
+        // height: 20%;
+
+
+    >img{
+        width: 3rem;
+        height: 3rem;
+        border: 2px solid black;
+        border-radius: 100%;
+    }
+    }
+    >.content{
+        width: 100%;
+        padding-left: 0.5rem;
+    >h3{
+        font-size: 1rem;
+        font-size: 700;
+        margin-block-start: 0.1em;
+        margin-block-end: 0.3em;
+        cursor: pointer;
+    }
+    >p{
+        font-size: 1rem;
+        font-family: serif;
+        margin-block-start: 0.3em;
+        margin-block-end: 0.3em;        
+    }
+}
+}
+
+@media screen and (max-width:600px) {
+    .postComments{
+        width: 70%;
+    }
+}
+@media screen and (max-width:400px) {
+    .postComments{
+        width: 90%;
+    }
+}

@@ -1,0 +1,584 @@
+.myprofile{
+    width: 100%;
+    height: 93vmin;
+
+    // background-color:red;
+
+    >.content{
+        width: 100%;
+        height: 100vh;
+        padding-top: 2rem;
+
+        display: flex;
+        overflow-y: scroll;
+        // background-color:#FAF9F6;
+
+        >.about{
+            width: 60%;
+            height: 100%;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            // background-color: #ffffff;
+
+            // border: 1px solid grey;
+            >.info{
+                width: 70%;
+                // height: 100%;
+                border: 2px solid grey;
+                border-radius: 0.2rem;
+                // background-color: #ffffff;
+
+            >.bgimg{
+                width: 100%;
+                height: fit-content;
+                // height: 15rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // aspect-ratio: 16/9;
+                overflow: hidden;
+                >img{
+                    // padding: 0.2rem;
+                    width: 100%;
+                    // height: fit-content;
+                    aspect-ratio: 16/9;
+                }
+            }
+            >.data-container{
+                width: 100%;
+                // height: 50%;
+            
+                display: flex;
+
+                // background-color: bisque;
+            
+            >.data{
+                width: 40%;
+                height: 100%;
+                padding: -1rem 0 0 0.4rem;
+                display: flex;
+                flex-direction: column;
+                // background-color: aquamarine;
+                padding: 0.2rem;
+
+                >div{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    // padding: -1rem 0 0 0.4rem;
+                    >img{
+                        width: 7rem;
+                        height: 7rem;
+                        // padding: 0.2rem;
+                        // border: 1px solid black;
+                        border-radius: 100%;
+                    }
+                }
+                >div{
+                    width: 100%;
+                    >p{
+                        font-family: 'Arial Narrow';
+                        font-weight: 700;
+                        font-size: 1rem;
+                    }
+                }
+            }
+         
+            >.profile-data{
+                width: 60%;
+                height: fit-content;
+                // height: auto;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                // justify-content: center;
+                
+                // background-color: aqua;
+                
+                >.post-frnd{
+                    width: 100%;
+                    height: 50%;
+                    padding-top: 1rem;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    // background-color: blue;
+
+                    >.postnum{
+                        width: 50%;
+                        height: 50%;
+                        display: flex;
+                        border: none;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        // background-color: brown;
+
+                        >h3{
+                        font-size: 1.17em;
+                        margin-block-start: 0;
+                        margin-block-end: 0;
+                        }
+
+                        >p{
+                            margin-block-start: 0.2em;
+                            margin-block-end: 0.2em;
+                        }
+                    }
+                    >.frnds{
+                        width: 50%;
+                        height: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        // background-color: burlywood;
+
+                        >h3{
+                        font-size: 1.17em;
+                        margin-block-start: 0;
+                        margin-block-end: 0;
+                        }
+
+                        >p{
+                            margin-block-start: 0.2em;
+                            margin-block-end: 0.2em;
+                        }
+                    }
+                }
+                >.btns{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    >button{
+                    // align-items: center;
+                    width: 35%;
+                    color: white;
+                    padding: 0.4rem;
+                    // background-image: repeating-linear-gradient(#8F00FF,#b766f5);
+                    background-color: rgb(129, 6, 129);
+                    font-weight: 600;
+                    font-size: 1rem;
+                    border: 2px solid rgb(129, 6, 129); //#b766f5
+                    border-radius: 0.8rem;
+                    text-decoration: none;
+                    
+                    cursor: pointer;
+                    transition: 0.5s all;
+            
+                    &:hover{
+                    background-color: white;
+                    // border-color: green;
+                    background-image: repeating-linear-gradient(#fff,#fff) ;
+                    color: #282c34;
+                    transform: scale(1.05);
+                }
+            } }
+              }
+            }
+            >.bio{
+                width: 100%;
+                padding-left: 0.5rem;
+                // height: 100%;
+
+                >.desc{
+                    width: 100%;
+                    padding: 0.2rem;
+                    display: flex;
+                    flex-direction: column;
+
+                    >.desctxt{
+                        // width: 40%;
+                        width: fit-content;
+                        // height: fit-content;
+                        >h3{
+                        font-family: 'Arial Narrow';
+                        font-size: 1em;
+                        margin-block-start: 0;
+                        margin-block-end: 0;
+                        }
+                    }
+                    >.descval{
+                        width: 50%;
+                        width: fit-content;
+                        height: fit-content;
+                    >p{
+                    font-family:serif;
+                    margin-block-start: 0.2em;
+                    margin-block-end: 0.2em;
+                    font-family:serif;
+                    }
+                    }
+                }
+                >.looking4{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: flex-start;
+                    >.looktxt{
+                        width: 30%;
+                        width: fit-content;
+                        height: fit-content;
+                        >h3{
+                        font-family: 'Arial Narrow';
+                        font-size: 1em;
+                        padding: 0.2rem;
+                        margin-block-start: 0;
+                        margin-block-end: 0;
+                      }
+                    }
+                    >.lookval{
+                        width: 50%;
+                        width: fit-content;
+                        height: fit-content;
+                        
+                    >p{
+                    margin-block-start: 0.2em;
+                    margin-block-end: 0.2em;
+                    font-family: serif;
+                    }
+                  }
+                }
+                >div{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    >button{
+                    width: 90%;
+                    background-image: repeating-linear-gradient(#8F00FF,#b766f5);
+                    color: white;
+                    padding: 0.2rem;
+                    border: 2px solid gray;
+                    border-radius: 0.4rem;
+                    margin: 0.4rem;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    // border-top-right-radius: 0.4rem;
+                    // border-bottom-right-radius: 0.4rem;
+        
+                    &:hover{
+                        cursor: pointer;
+                        background-color: #282c34;
+                        color: white;
+                    }
+                  } 
+                }
+            }
+            }//////////////about end here
+
+            >.skills{
+                width: 70%;
+                margin-top: 1rem;
+                // height: 20%;
+                border: 2px solid grey;
+                border-radius: 0.2rem;
+                background-color: #ffffff;
+                // padding: 2rem;
+                >p{
+                    // margin-block-start: 0.2em;
+                    // margin-block-end: 0.2em;
+                    text-align: center;
+                    font-family: serif;
+                    font-weight: 700;
+                    }
+                    >div{
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        >li{
+                            padding: 0 0.5rem;
+                        }
+                    }
+                }
+            }
+            >.edu-suggest{
+                width: 40%;
+                height: 100%;
+                // display: flex;
+                // flex-direction: column;
+                // justify-content: space-around;
+                // align-items: baseline;
+            >.education{
+                width: 100%;
+                height: 100%;
+                font-family: 'Arial Narrow';
+                font-size: 1em;
+                padding: 0.2rem;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: baseline;
+                // margin-top: 2.5rem;
+
+                >.edu{
+                    width: 80%;
+                    border: 2px solid grey;
+                    border-radius: 0.2rem;
+                    padding: 0.2rem;
+                    background-color: #ffffff;
+                    >h3{
+                        text-align: center;
+                    }
+                >.edu-info{
+                    width: 100%;
+                    >.batch{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+                        height: fit-content;
+                       
+                        >h3{
+                            font-family: 'Arial Narrow';
+                            font-size: 1em;
+                            padding: 0.2rem;
+                            margin-block-start: 0.2em;
+                            margin-block-end: 0.2em;
+                            >span{
+                                color: rgb(94, 92, 92);
+                                font-weight: 500;
+                                font-family: serif;
+                            }
+                        }
+                    }
+                    >.clgname{
+                        width: 100%;
+                        height: fit-content;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                       
+                        >h3{
+                            font-family: 'Arial Narrow';
+                            font-size: 1em;
+                            padding: 0.2rem;
+                            margin-block-start: 0.2em;
+                            margin-block-end: 0.2em;
+                        }
+                        >p{
+                            color: rgb(94, 92, 92);
+                            font-weight: 500;
+                            font-family: serif;
+                            margin-block-start: 0em;
+                            margin-block-end: 0em;
+                        }
+                    }
+                    >.crsname{
+                        width: 100%;
+                        height: fit-content;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        width: 100%;
+                        height: fit-content;
+                       
+                        >h3{
+                        font-family: 'Arial Narrow';
+                        font-size: 1em;
+                        padding: 0.2rem;
+                        margin-block-start: 0.2em;
+                        margin-block-end: 0.2em;
+                        }
+                        >p{
+                        color: rgb(94, 92, 92);
+                        font-weight: 500;
+                        font-family: serif;
+                        margin-block-start: 0em;
+                        margin-block-end: 0em;
+                        }
+                    }
+                    >.stream{
+                        width: 100%;
+                        height: fit-content;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        width: 100%;
+                        height: fit-content;
+                       
+                        >h3{
+                        font-family: 'Arial Narrow';
+                        font-size: 1em;
+                        padding: 0.2rem;
+                        margin-block-start: 0.2em;
+                        margin-block-end: 0.2em;
+                        }
+                        >p{
+                        color: rgb(94, 92, 92);
+                        font-weight: 500;
+                        font-family: serif;
+                        margin-block-start: 0em;
+                        margin-block-end: 0em;
+                        }
+                    }
+                    >.address{
+                        width: 100%;
+                        height: fit-content;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        width: 100%;
+                        height: fit-content;
+                       
+                        >h3{
+                        font-family: 'Arial Narrow';
+                        font-size: 1em;
+                        padding: 0.2rem;
+                        margin-block-start: 0.2em;
+                        margin-block-end: 0.2em;
+                        }
+                        >p{
+                        color: rgb(94, 92, 92);
+                        font-weight: 500;
+                        font-family: serif;
+                        margin-block-start: 0em;
+                        margin-block-end: 0em;
+                        }
+                    }
+        
+                  }
+               }
+               >.suggest{
+                margin-top: 1rem;
+                width: 80%;
+                height: 50%;
+                overflow-y: scroll;
+                border: 2px solid grey;
+                border-radius: 0.3rem;
+                background-color: #ffffff;
+                overflow-y: scroll;
+                scrollbar-width: none;
+  
+                &::-webkit-scrollbar{
+                  display: none;
+                }
+                >h3{
+                    text-align: center;
+                    top: 0;
+                }
+                >div{
+                    width: 80%;
+                    // height: 40%;
+                    padding: 0.2rem;
+                    // overflow-y: scroll;
+                }
+            }
+            }
+          }
+        }
+
+        >.nav{
+            width: 100%;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+        }
+        }
+@media screen and (max-width:900px) {
+    .myprofile>.content{
+        >.about{
+            >.info{
+                width: 90%;
+            }
+            >.skills{
+                width: 90%;
+            }
+        }
+    >.edu-suggest>.education{
+        >.edu{
+            width: 90%;
+        }
+        >.suggest{
+            width: 90%;
+        }
+    }
+  }
+}
+
+@media screen and (max-width:700px) {
+    .myprofile>.content{
+        flex-direction: column;
+        padding-top: 1rem;
+        >.about{
+            width: 100%;
+            >.info{
+                width: 80%;
+            }
+            >.skills{
+                width: 80%;
+            }
+        }
+    >.edu-suggest{
+        width: 100%;
+        >.education{
+            width: 100%;
+            margin-top: 1rem;
+            align-items: center;
+            >.edu{
+                width: 80%;
+            }
+            >.suggest{
+                width: 80%;
+            }
+        }
+    }
+  }
+}
+
+@media screen and (max-width:450px) {
+    .myprofile>.content{
+        padding-top: 0;
+        >.about{
+            >.info{
+                width: 100%;
+                border: none;
+            }
+            >.skills{
+                width: 90%;
+            }
+        }
+    >.edu-suggest{
+        width: 100%;
+        >.education{
+            >.edu{
+                width: 90%;
+            }
+            >.suggest{
+                width: 90%;
+            }
+        }
+    }
+  }
+}
+
+@media screen and (max-width:350px) {
+    .myprofile > .content > .about > .info{
+    > .data-container{ 
+    > .data> div > p {
+     margin-block-start: 0.5em; 
+     margin-block-end: 0.5em;
+     font-size: 0.85rem;
+    }  
+    >.profile-data > .btns > button{
+      width: 40%;
+      font-size: 1rem;
+      padding: 0.2rem;
+      font-size: 100;
+    }
+  }
+  .bio{
+    >.desc{
+    font-size: 0.85rem;
+    padding: 0.4rem;
+}
+}
+}
+}

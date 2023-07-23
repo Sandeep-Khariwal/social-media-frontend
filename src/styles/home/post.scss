@@ -1,0 +1,91 @@
+.post{
+    width: 100%;
+    height: auto;
+    // padding: 1rem;
+    margin-bottom: 2rem;
+
+   background-color: #ffffff;
+   border: 2px solid rgb(233, 229, 229);
+   border-radius: 0.6rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    >.account{
+        width: 100%;
+        // height: 15%;
+        padding: 0.5rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        >img{
+            width: 2.5rem;
+            height: 2.5rem;
+            border: 2px solid black;
+            border-radius: 100%;
+        }
+
+        >.info{
+            width: 80%;
+            height: 100%;
+            margin-left: 0.2rem;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            >h3{
+            font-size: 1.2em;
+            margin-block-start: 0em;
+            margin-block-end: 0em;
+            }
+            >p{
+            margin-block-start: 0em;
+            margin-block-end: 0em;
+            }
+        }
+    }
+    >.desc{
+        width: 95%;
+        padding: 0 1rem 0 1rem;
+        font-weight: 700;
+    }
+    >img{
+        width: 95%;
+        height: 30rem;
+    }
+    >.social{
+        width: 100%;
+        // height: 100%;
+        padding: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        // justify-content: space-around;
+        // align-items: center;
+       >p{
+        padding-left: 0.7rem;
+        font-weight: 700;
+        margin-block-start: 0.4rem;
+        margin-block-end: 0.5rem;
+        font-family: serif;
+       }
+       >.icon{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        >.icons{
+            font-size: 1.5rem;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+       }
+    }
+}

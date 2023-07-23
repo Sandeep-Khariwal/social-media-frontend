@@ -1,0 +1,64 @@
+.comments{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#FAF9F6;
+
+    >form{
+        width: 100%;
+        height: 10vmin;
+        padding: 2rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        >input{
+            width: 70%;
+            border: 2px solid grey;
+            font-size: 1.1rem;
+            border-radius: 0.4rem;
+            padding: 0.5rem;
+            margin-top: 2.5rem;
+        }
+        >button{
+            align-items: center;
+            width: 30%;
+            color: white;
+            padding: 0.7rem;
+            margin-top: 1rem;
+            background-image: repeating-linear-gradient(#8F00FF,#b766f5);
+            // background-color: green;
+            font-weight: 900;
+            font-size: 1.1rem;
+            border: 2px solid #b766f5;
+            border-radius: 0.8rem;
+            text-decoration: none;
+            
+            cursor: pointer;
+            transition: 0.5s all;
+    
+            &:hover{
+            background-color: white;
+            // border-color: green;
+            background-image: repeating-linear-gradient(#fff,#fff) ;
+            color: #282c34;
+            transform: scale(1.05);
+        }
+      } 
+    }
+    >.allCmnts{
+        width: 100%;
+        margin-top: 1rem;
+        >h3{
+            font-size: 1.3rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+    }
+}
