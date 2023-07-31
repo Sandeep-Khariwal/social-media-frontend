@@ -6,12 +6,12 @@ const initialState = {
     Commentloading:false,
     follow:false,
     friends:[],
-    allPosts:[],
     userPosts:[],
     suggestions:[],
     likes:[],
     comments:[],
-    userProfile:null
+    userProfile:null,
+    myFriends:[]
 }
 
 export const userSlices = createSlice({
@@ -31,8 +31,8 @@ export const userSlices = createSlice({
         .addCase(getLikesAndComments.fulfilled,(state,actions)=>{
             state.loading = false;
             const {likes , comments} = actions.payload;
-            // state.allPosts = posts;
-            console.log("all likes and comments : ",likes , comments );
+            state.likes = likes
+            state.comments = comments
         })
         .addCase(getLikesAndComments.rejected,(state,actions)=>{
           console.log("rejected ",actions.payload);
@@ -43,30 +43,12 @@ export const userSlices = createSlice({
         .addCase(likeAndDislike.fulfilled,(state,actions)=>{
             // state.loading = false;
             const {likes , comments} = actions.payload;
-            state.totalLike = Object.keys(likes).length;
+            // state.totalLike = Object.keys(likes).length;
             state.comments = comments;
             state.likes = likes;
         })
         .addCase(likeAndDislike.rejected,(state,actions)=>{
             // state.loading = false
-          console.log("rejected ",actions.payload);
-        })
-        .addCase(leaveCommentApi.pending,(state,actions)=>{
-            state.Commentloading = true;
-        })
-        .addCase(leaveCommentApi.fulfilled,(state,actions)=>{
-            const {user,comments} = actions.payload;
-            console.log("comments are : ",user);
-            state.allPosts.map((item)=>{
-                if(item._id === user._id){
-                    item.comments = user.comments;
-                }
-            })
-            state.comments = comments
-            state.Commentloading = false;
-        })
-        .addCase(leaveCommentApi.rejected,(state,actions)=>{
-            state.Commentloading = false;
           console.log("rejected ",actions.payload);
         })
         .addCase(getUserProfileById.pending,(state,actions)=>{
@@ -109,39 +91,28 @@ export const userSlices = createSlice({
             state.loading = false;
             state.follow = follow;
             state.friends = user.friends;
-        
-            
         })
         .addCase(followOrUnFollow.rejected,(state,actions)=>{
             state.loading = false;
             console.log("rejected ",actions.payload);
         })
-        // .addCase(getFriendList.pending,(state,actions)=>{
-        //     state.loading = true;
-        // })
-        // .addCase(getFriendList.fulfilled,(state,actions)=>{
-        //     console.log(" getFriendList  : ",actions.payload);
-            
-        // })
-        // .addCase(getFriendList.rejected,(state,actions)=>{
-        //     state.loading = false;
-        //     console.log("getFriendList rejected ",actions.payload);
-        // })
+        .addCase(getFriendList.pending,(state,actions)=>{
+            state.loading = true;
+        })
+        .addCase(getFriendList.fulfilled,(state,actions)=>{
+            state.loading = false
+            const {friends} = actions.payload;
+            state.myFriends = friends
+        })
+        .addCase(getFriendList.rejected,(state,actions)=>{
+            state.loading = false;
+            console.log("getFriendList rejected ",actions.payload);
+        })
     }
 })
 
-const API_PORT = "http://localhost:8080";
-/*GETTING ALL USERS */
-export const getAllPost = createAsyncThunk(
-    "user/posts",
-    async(_,{rejectWithValue})=>{
-        try {
-            return await axios.get(`${API_PORT}/api/v1/posts/allposts`).then((response)=>response.data)   
-        } catch (error) {
-            return rejectWithValue(error.response.data); 
-        }
-    }
-)
+const API_PORT = "https://batch-mate.onrender.com";
+// const API_PORT = "http://localhost:8080";
 
 /*GET LIKES AND COMMENTS*/
 export const getLikesAndComments = createAsyncThunk(
@@ -163,19 +134,6 @@ export const likeAndDislike = createAsyncThunk(
             return await axios.put(`${API_PORT}/api/v1/posts/likes/${id}`,formData).then((response)=>response.data.updatedPost)
         } catch (error) {
             return rejectWithValue(error.response.data);    
-        }
-    }
-)
-
-/*POST COMMENTS HERE */ 
-export const leaveCommentApi = createAsyncThunk(
-    "user/comments",
-    async({id,userId,formData},{rejectWithValue})=>{
-        try {
-            // console.log("id n usrid in rdx : ",id,userId);
-          return await axios.post(`${API_PORT}/api/v1/posts/comment/${id}/${userId}`,formData).then((response)=>response.data)
-        } catch (error) {
-        return rejectWithValue(error.response.data);  
         }
     }
 )
@@ -213,16 +171,16 @@ export const followOrUnFollow = createAsyncThunk(
         }
     }
 )
-// export const getFriendList = createAsyncThunk(
-//     "user/getFriendList",
-//     async({id,myid},{rejectWithValue})=>{
-//         try {
-//             return await axios.get(`${API_PORT}/api/v1/users/friends/${id}/${myid}`).then((response)=>response.data)
-//         } catch (error) {
-//           return rejectWithValue(error.response.data);    
-//         }
-//     }
-// )
+export const getFriendList = createAsyncThunk(
+    "user/getFriendList",
+    async(id,{rejectWithValue})=>{
+        try {
+            return await axios.get(`${API_PORT}/api/v1/users/friends/${id}`).then((response)=>response.data)
+        } catch (error) {
+          return rejectWithValue(error.response.data);    
+        }
+    }
+)
 
 export const {setComments} = userSlices.actions
 export default userSlices.reducer

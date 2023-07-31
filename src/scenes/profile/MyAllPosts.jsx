@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from 'react'
-import Post from '../../component/Post'
-import Bottomnav from '../navbar/Bottomnav'
-import { useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import Post from "../../Post/Post";
+import Bottomnav from "../navbar/Bottomnav";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const MyAllPosts = () => {
-
-    const location = useLocation();
-    const post = location.state.posts
-    const {mode} = useSelector((state)=>state.auth)
-    // console.log("posts is : ",post);
-    // const [user,setUser] = useState([]);
-    // useEffect(()=>{
-    //   console.log("posts is : ",location.state);
-    // },[])
+  const location = useLocation();
+  const { posts } = location.state;
+  const { mode } = useSelector((state) => state.auth);
 
   return (
-    <div className='myallposts'  style={mode === 'light'? {backgroundColor:"#FAF9F6"}:{backgroundColor:"#282c34" , color:"white" }} >
-    <h3>{post?.length > 0?`You have ${post?.length} Posts`:"You Haven't Done Post yet"}</h3>
-      <div className='myposts'>
-        <div className='posts' >
-        {
-           post?.map((post)=>(
-                <Post post={post} />
-            ))
-        }
+    <div
+      className="myallposts"
+      style={
+        mode === "light"
+          ? { backgroundColor: "#FAF9F6" }
+          : { backgroundColor: "#282c34", color: "white" }
+      }
+    >
+      <h3>
+        {posts?.length > 0 ? `Found ${posts?.length} Posts` : "No Post yet"}
+      </h3>
+      <div className="myposts">
+        <div className="posts">
+          {posts &&
+            posts.map((post, index) => <Post key={index} post={post} />)}
         </div>
       </div>
-      <div className='navbar'>
-        <Bottomnav/>
+      <div className="navbar">
+        <Bottomnav />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MyAllPosts
+export default MyAllPosts;

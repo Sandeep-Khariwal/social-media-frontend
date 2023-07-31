@@ -3,24 +3,43 @@ import axios from "axios";
 
 const initialState = {
     loading:false,
+    username:"",
+    profilePic:"",
     savedPosts:[],
     allPosts:[],
-    friends:[]
+    friends:[],
+    suggestions:[]
 }
 export const postSlice = createSlice({
     name:"post",
     initialState,
+    reducers:{
+     setPosts:(state)=>{
+      state.allPosts = []
+     }
+    },
     extraReducers:(builder)=>{
        builder
-      .addCase(getAllPost.pending,(state,actions)=>{
+      .addCase(createPost.pending,(state,actions)=>{
         state.loading = true;
       })
-      .addCase(getAllPost.fulfilled,(state,actions)=>{
-          const {posts} = actions.payload ;
-          state.allPosts = posts;
-          state.loading = false;
+      .addCase(createPost.fulfilled,(state,actions)=>{
+        state.loading = false
       })
-      .addCase(getAllPost.rejected,(state,actions)=>{
+      .addCase(createPost.rejected,(state,actions)=>{
+        state.loading = false;
+        console.log("rejected createPost ",actions.payload);
+      })
+      .addCase(getAllPosts.pending,(state,actions)=>{
+        state.loading = true;
+      })
+      .addCase(getAllPosts.fulfilled,(state,actions)=>{
+        state.loading = false;
+        const {posts,suggested} = actions.payload;
+        state.allPosts = posts;
+        state.suggestions = suggested
+      })
+      .addCase(getAllPosts.rejected,(state,actions)=>{
           state.loading = false;
         console.log("rejected ",actions.payload);
       })
@@ -37,7 +56,6 @@ export const postSlice = createSlice({
        })
        .addCase(getSavePosts.pending,(state,action)=>{
          state.loading = true;
-         console.log("getSavePosts pending: ");
        })
        .addCase(getSavePosts.fulfilled,(state,actions)=>{
          state.loading = false;
@@ -54,7 +72,6 @@ export const postSlice = createSlice({
        .addCase(DeletePost.fulfilled,(state,actions)=>{
          state.loading = false;
          const {posts,success} = actions.payload
-         console.log("after deleted posts : ",posts);
          if(success){
           state.allPosts = posts;
          }
@@ -63,16 +80,44 @@ export const postSlice = createSlice({
          state.loading = false;
          console.log("getSavePosts error : ",action.payload);
        })
+       .addCase(leaveCommentApi.pending,(state,actions)=>{
+        state.Commentloading = true;
+    })
+    .addCase(leaveCommentApi.fulfilled,(state,actions)=>{
+        const {user,comments} = actions.payload;
+        state.allPosts.forEach((item)=>{
+            if(item._id === user._id){
+                item.comments = user.comments;
+            }
+        })
+        state.comments = comments
+        state.Commentloading = false;
+    })
+    .addCase(leaveCommentApi.rejected,(state,actions)=>{
+        state.Commentloading = false;
+      console.log("rejected ",actions.payload);
+    })
     }
 })
 
-const API_PORT = "http://localhost:8080";
-/*GETTING ALL USERS */
-export const getAllPost = createAsyncThunk(
-  "user/posts",
-  async(_,{rejectWithValue})=>{
+const API_PORT = "https://batch-mate.onrender.com";
+// const API_PORT = "http://localhost:8080";
+
+export const createPost = createAsyncThunk(
+  "post/createPosts",
+  async({formData,id},{rejectWithValue})=>{
       try {
-          return await axios.get(`${API_PORT}/api/v1/posts/allposts`).then((response)=>response.data)   
+        return await axios.post(`${API_PORT}/api/v1/posts/post/${id}`,formData).then((response)=>response.data)   
+      } catch (error) {
+        return rejectWithValue(error.response.data); 
+      }
+  }
+)
+export const getAllPosts = createAsyncThunk(
+  "post/posts",
+  async(id,{rejectWithValue})=>{
+      try {
+          return await axios.get(`${API_PORT}/api/v1/posts/allposts/${id}`).then((response)=>response.data)   
       } catch (error) {
           return rejectWithValue(error.response.data); 
       }
@@ -101,7 +146,7 @@ export const getSavePosts = createAsyncThunk(
 )
 
 export const DeletePost = createAsyncThunk(
-  "deletePost",
+  "post/deletePost",
   async({id,userId},{rejectWithValue})=>{
     try {
         return await axios.delete(`${API_PORT}/api/v1/posts/deletepost/${id}/${userId}`).then((response)=>response.data)
@@ -110,5 +155,17 @@ export const DeletePost = createAsyncThunk(
     }
 }
 ) 
+
+/*POST COMMENTS HERE */ 
+export const leaveCommentApi = createAsyncThunk(
+  "user/comments",
+  async({id,userId,formData},{rejectWithValue})=>{
+      try {
+        return await axios.post(`${API_PORT}/api/v1/posts/comment/${id}/${userId}`,formData).then((response)=>response.data)
+      } catch (error) {
+      return rejectWithValue(error.response.data);  
+      }
+  }
+)
 
 export default postSlice.reducer;

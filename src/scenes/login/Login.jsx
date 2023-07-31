@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import me from "../../assets/me.jpg"
+import me from "../../assets/myRandomPic.jpg"
 import {motion} from "framer-motion"
-import Appstore from "../../assets/Appstore.png"
-import playstore from "../../assets/playstore.png"
 import { Link, useNavigate } from 'react-router-dom'
 import { FaInstagram , FaFacebookSquare , FaLinkedin } from "react-icons/fa"
 
@@ -32,7 +30,6 @@ const Login = () => {
       if(success){
         toast.success(message);
         setTimeout(()=>{
-          // window.location.reload(true)
           navigate("/home")
         },[2000])
       } else{
@@ -45,23 +42,22 @@ const Login = () => {
   <ToastContainer />
     <div className='login' >
       <div className='loginInfo' >
-        <h2>Welcome to the Batch-Mate App</h2>
+        <h2>Find your career mate with Batch-mate App</h2>
        <div>
-       {/* <h1>Welcome To The APP</h1> */}
        <h2>Designed and created By,</h2>
-       <motion.p 
+       <p 
        initial={{x:"-100%",opacity:0 }}
        whileInView={{x:"0%",opacity:1 }}
        transition={{delay:0.5,duration:0.5}}
-       >Sandeep Khariwal</motion.p>
-       <motion.img src={me} alt='not found'
+       >Sandeep Khariwal</p>
+       <img src={me} alt='not found'
        initial={{x:"+100%",opacity:0 }}
        whileInView={{x:"0%",opacity:1 }}
        transition={{delay:0.5,duration:0.5}} />
        <div className='icons' >
-        <Link to={"/"} ><FaInstagram/></Link>
-        <Link to={"/"} ><FaFacebookSquare/></Link>
-        <Link to={"/"} ><FaLinkedin/></Link>
+        <Link to={"https://www.instagram.com/sandeep_khariwal/"} ><FaInstagram/></Link>
+        <Link to={"https://www.facebook.com/sandeep.kharival.3"} ><FaFacebookSquare/></Link>
+        <Link to={"https://www.linkedin.com/in/sandeep-khariwal-95b65522b"} ><FaLinkedin/></Link>
        </div>
        </div>
       </div>
@@ -76,18 +72,13 @@ const Login = () => {
         <input type='password'  name='password' onChange={onChangeHandle}   minLength={6}  initial={{y:"+100%",opacity:0 }}whileInView={{y:"0%",opacity:1 }}transition={{delay:0.1,duration:0.5}}/>
            <span>Password</span>
         </div>
-          <motion.button onClick={onClickHandle} initial={{x:"+100%",opacity:0 }}whileInView={{x:"0%",opacity:1 }}transition={{delay:0.1,duration:0.4}}>Login</motion.button>
-          {/* <p>or</p> */}
-          <motion.button initial={{x:"+100%",opacity:0 }}whileInView={{x:"0%",opacity:1 }}transition={{delay:0.1,duration:0.2}} onClick={()=>{navigate("/register")}} >Sign Up</motion.button>
+          <button onClick={onClickHandle} initial={{x:"+100%",opacity:0 }}whileInView={{x:"0%",opacity:1 }}transition={{delay:0.1,duration:0.4}}>Login</button>
+          <button initial={{x:"+100%",opacity:0 }}whileInView={{x:"0%",opacity:1 }}transition={{delay:0.1,duration:0.2}} onClick={()=>{navigate("/register")}} >Sign Up</button>
           <a href='/' initial={{y:"+100%",opacity:0 }}whileInView={{y:"0%",opacity:1 }}transition={{delay:0.1,duration:0.2}}>forgot password?</a>
         </motion.form>
        </div>
       </div>
     </div>
-    {/* <div className='playstore' >
-    <img src={Appstore} alt='not'/>
-    <img src={playstore} alt='not' />
-  </div> */}
   </>
   )
 }

@@ -1,6 +1,6 @@
 .login{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0px;
     padding-bottom: 1rem;
 
@@ -48,13 +48,13 @@
             }
 
             >p{
-                border: 1px solid white;
-                border-radius: 0.5rem;
+                // border: 1px solid white;
+                // border-radius: 0.5rem;
                 padding: 0.5rem;
                 text-align: left;
                 margin-block-start: 0.3em;
                 margin-block-end: 0.3em;
-                color: rgb(154, 143, 238);
+                // color: rgb(154, 143, 238);
 
                 // animation-name: name;
                 // animation-duration: 0.2s;
@@ -64,7 +64,7 @@
             >img{
                 width: 60%;
                 border-radius: 0.5rem;
-                box-shadow: 1px 1px 1rem white;
+                // box-shadow: 1px 1px 1rem white;
             }
 
             >.icons{
@@ -216,7 +216,7 @@
                 margin: 0.3rem;
                 padding: 0.7rem ;
                 background-color: #c73434;
-                box-shadow: 3px 1px 1rem red;
+                // box-shadow: 3px 1px 1rem red;
                 font-weight: 800;
                 border: 2px solid #c73434;
                 border-radius: 0.8rem;
@@ -284,9 +284,12 @@
         >.loginInfo{
             width: 100%;
             justify-content: center;
+            >h2{
+                font-size: 1rem;
+            }
             >div{
             height: 100%;
-            height: 30rem;
+            // height: 30rem;
             >img{
                 width: 40%;
             }
@@ -296,7 +299,10 @@
             justify-content: center;
 
             >div{
-            height: 30rem;
+            height: 20rem;
+            // height: fit-content;
+            // padding: 1rem;
+            
             >form{
             height: 100%;
             justify-content: space-around;
@@ -308,7 +314,7 @@
 @media screen and (max-width:700px) {
     .login{
         width: 100%;
-        height: 80%;
+        height: 100%;
         justify-content: flex-start;
         >.loginInfo>div
             >img{
@@ -339,7 +345,7 @@
 //         height: 25rem;
 //     }
 // }
-@media screen and (max-width:40px) {
+@media screen and (max-width:450px) {
     .login>.loginInfo>div{
         height: 20rem;
     }

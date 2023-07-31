@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Bottomnav from './Bottomnav'
-import Post from '../../component/Post'
+import Bottomnav from '../scenes/navbar/Bottomnav'
+import Post from './Post'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSavePosts } from '../../state/post'
+import { getSavePosts } from '../state/post'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+var bookMark = true
 
 const SavedPosts = () => {
     const {mode} = useSelector((state)=>state.auth)
@@ -17,8 +19,6 @@ const SavedPosts = () => {
     useEffect(()=>{
         const user = localStorage.getItem("user");
         const {_id} = JSON.parse(user);
-        console.log("destructured id : ",_id);
-        // setId(_id)
         dispatch(getSavePosts({_id})).then((response)=>{
             const {success,message } = response.payload;
             if(success){
@@ -37,7 +37,7 @@ const SavedPosts = () => {
         <div className='posts' >
         {
            post?.map((post)=>(
-                <Post post={post} />
+                <Post bookMark={bookMark} post={post} />
             ))
         }
         </div>

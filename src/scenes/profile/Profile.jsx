@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {FaBookReader} from "react-icons/fa"
 import {IoDocumentText} from "react-icons/io5"
-import {MdLocationPin} from "react-icons/md"
+
 import {HiOutlineBuildingLibrary} from "react-icons/hi2"
 import { RiEditBoxLine } from "react-icons/ri"
 import {Modal} from "antd"
@@ -11,8 +11,7 @@ import { Link } from "react-router-dom"
 import { useSelector } from 'react-redux'
 import Profilepic from './Profilepic'
 import Bgprofilepic from './Bgprofilepic'
-// FaLocationDot
-// FaUserPen
+
 const Profile = () => {
   const  { mode}  = useSelector((state)=> state.auth);
   const [visible1, setVisible1] = useState(false);
@@ -20,7 +19,6 @@ const Profile = () => {
   const [user,setUser] = useState({})
 
  
-  // console.log("profile user ",user);
   useEffect(()=>{
     const myDetails = localStorage.getItem("user");
     setUser(JSON.parse(myDetails));
@@ -39,7 +37,6 @@ const Profile = () => {
        { user?.BgPic?  <img src={user?.BgPic} alt='not found'/> : <FaUserCircle style={{width:"50%", height:"100%"}} />  }
       </div>
       <div className='profilepic' onClick={()=>setVisible1(true)}>
-      {/* `http://localhost:8080/api/v1/auth/${user._id}` */}
       { user?.profilePic?  <img src={user?.profilePic} alt='not found'/> :  <FaUserAlt style={{width:"50%", height:"100%"}} />  }
       </div>
       <div className='details'>

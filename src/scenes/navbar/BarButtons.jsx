@@ -5,7 +5,7 @@ const BarButtons = ({id,setVisible}) => {
   const navigate = useNavigate();
 
   const deleteAcount = ()=>{
-
+    alert("this feature is pending now..")
   }
   return (
     <div className='barbuttons' >

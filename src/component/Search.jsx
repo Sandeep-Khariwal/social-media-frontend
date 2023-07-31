@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { FaSearch } from "react-icons/fa"
-import Friend from './Friend'
+import Friend from '../Friend/Friend'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchProfileByName } from '../state'
 import PulseLoader from 'react-spinners/PulseLoader'
 import Bottomnav from '../scenes/navbar/Bottomnav'
 
 const override: CSSProperties = {
-  // display: "block",
   width:"100%",
   display:"flex",
   height:"100vh",
   justifyContent:"center",
   alignItems:"center",
-  backgroundColor:"#1d2b3a",
-  // backgroundColor:"#282c34"
+  backgroundColor:"#1d2b3a"
 };
 
 const Search = () => {

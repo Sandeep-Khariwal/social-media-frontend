@@ -8,10 +8,8 @@ import { Badge } from 'antd';
 import Profile from './Profile'
 import me from "../../assets/me2.jpg"
 import Bottomnav from "../navbar/Bottomnav"
-import Friend from '../../component/Friend'
+import Friend from '../../Friend/Friend'
 import {FaUserAlt,FaUserCircle} from "react-icons/fa"
-import { editProfile } from '../../state'
-import Layout from '../../Layout/Layout'
 import { useDispatch, useSelector } from 'react-redux'
 import Profilepic from './Profilepic'
 import Bgprofilepic from './Bgprofilepic'
@@ -22,9 +20,6 @@ const MyProfile = () => {
   const {mode} = useSelector((state)=>state.auth);
   const dispatch = useDispatch()
     const navigate = useNavigate();
-    // const [post,setPost] = useState(0)
-    // const [friend,setFriends] = useState(0)
-    // const [suggest,setSuggest] = useState([])
 
     const [visible1, setVisible1] = useState(false);
     const [visible2, setVisible2] = useState(false);
@@ -32,33 +27,18 @@ const MyProfile = () => {
     const [user,setUser] = useState([]);
     const {  BgPic , profilePic} = user;
     const {userProfile,loading,suggestions,friends} = useSelector((state)=>state.user);
-    console.log("my profile check : ",userProfile);
     useEffect(()=>{
       const user = localStorage.getItem("user");
       const suggestion = localStorage.getItem("suggestion")
       const getsug = JSON.parse(suggestion);
       const {_id} = JSON.parse(user);
-      console.log("id in myprof",_id);
       dispatch(getMyProfileById(_id))
 
-      // setSuggest(getsug)
       setUser(JSON.parse(user));
       const { posts } = JSON.parse(user)
-      // setPost(posts?.length)
-      // const me = JSON.parse(user)
-      // setUser(me)
-    //   console.log("posts is : ",posts);
     },[])
 
-    // useEffect(()=>{
-    //   const user = localStorage.getItem("user");
-    //   const { posts } = JSON.parse(user)
-    //   setPost(posts?.length)
-    //   setUser(JSON.parse(user));
-    // },[])
-
   return ( 
-  // <Layout>
     <div className='myprofile' style={mode === 'light'? {backgroundColor:"#FAF9F6",color:"black"}:{backgroundColor:"#282c34" , color:"#FAF9F6" } }  >
 
       <Modal onCancel={()=>setVisible1(false)} footer={null} open={visible1}>
@@ -108,7 +88,7 @@ const MyProfile = () => {
         </div>
         <div className='looking4'>
           <div className='looktxt'><h3>Looking for : </h3></div>
-          <div className='loovkval'><p>{userProfile?.look?userProfile.look:"Not Saved"}</p></div>         
+          <div className='lookval'><p>{userProfile?.look?userProfile.look:"Not Saved"}</p></div>         
         </div>
        </div>
       </div>
@@ -116,8 +96,8 @@ const MyProfile = () => {
         <p>My Skills</p>
         <div>
           {
-            userProfile?.skills && userProfile?.skills.map((item)=>(
-              <li key={item._id} >{item}</li>
+            userProfile?.skills && userProfile?.skills.map((item,index)=>(
+              <li key={index} >{item}</li>
             ))
           }
         </div>

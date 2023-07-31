@@ -81,10 +81,6 @@ const Registration = () => {
       <ToastContainer />
         <h1>Registration</h1>
       <form>
-      {/* <div className='inputbox' >
-        <input onChange={ handleChange } type='text' />
-        <span>User Name</span>
-      </div> */}
       <div className='inputbox' >
       <input onChange={ handleChange } type='text' name='username' required />
         <span>User Name</span>

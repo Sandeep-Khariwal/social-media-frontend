@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow: hidden;
 
     >.myposts{
         width: 80%;
@@ -20,6 +21,7 @@
      >.posts{
         width: 50%;
         height: 100%;
+        padding: 1rem;
 
         overflow-y: scroll;
         scrollbar-width: none;

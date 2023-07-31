@@ -14,11 +14,12 @@ const myStyle1 = {
 }
 
 const myStyle2 = {
-    width:"80%",
+    width:"90%",
     height:"100%",
     display:"flex",
-    justifyContent:"center",
-    alignItems:"center"
+    flexDirection:"column",
+    justifyContent:"start",
+    alignItems:"start"
 }
 
 const myStyle3 = {
@@ -34,6 +35,12 @@ const Notifications = () => {
     <div  style={mode === 'light'? {backgroundColor:"#FAF9F6"}:{backgroundColor:"#282c34" , color:"white" }} >
      <div style={myStyle1}>
      <div style={myStyle2} >
+        <Notification/>
+        <Notification/>
+        <Notification/>
+        <Notification/>
+        <Notification/>
+        <Notification/>
         <Notification/>
       </div>
       <div style={myStyle3} >

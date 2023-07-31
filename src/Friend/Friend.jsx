@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-import me from "../assets/me.jpg"
 import { FaUserAlt } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 
 const Friend = ({item}) => {
-
   const navigate = useNavigate()
   let [color, setColor] = useState("#b766f5");
-  console.log(item?._id);
   return (
     <div className='friend'>
     {item?.profilePic?<img src={item?.profilePic}/>:<FaUserAlt style={{width:"2rem", height:"2rem",border:"2px silid black",borderRadius:"100%"}} />}

@@ -14,7 +14,6 @@ const Bottomnav = () => {
     const user = localStorage.getItem("user")
     setUser(JSON.parse(user));
   },[])
-  
   const navigate = useNavigate()
 
   return (
@@ -22,9 +21,9 @@ const Bottomnav = () => {
       <AiOutlineHome className='icons' title='Home' onClick={()=>{navigate("/home")}} />
       <BiSearch className='icons' title='Search' onClick={()=>{navigate("/search")}} />
       <CgAdd className='icons' title='Post' onClick={()=>{navigate(`/post/${user._id}`)}} />
-      <Badge className='icons' count={5} >
+      {/* <Badge className='icons' count={5} >
         <MdOutlineNotifications title='notifications' onClick={()=>{navigate("/notifications")}}/>
-      </Badge>
+      </Badge> */}
       <CgProfile className='icons' title='My Profile' onClick={()=>{navigate("/profile")}} />
     </div>
   )

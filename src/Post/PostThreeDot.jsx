@@ -1,18 +1,18 @@
-import axios from 'axios'
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { DeletePost } from '../state/post';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
-const API_PORT = "http://localhost:8080";
 
 const PostThreeDot = ({id ,userId, setVisible}) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
- const deletePost = (e) =>{
-    e.preventDefault();
+ const deletePost = () =>{
+    // e.preventDefault();
     dispatch(DeletePost({id,userId})).then((response)=>{
       const {success,message } = response.payload;
       if(success){

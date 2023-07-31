@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { message } from "antd";
 import axios from "axios";
 
 const initialState = {
     mode:"light",
     status:false,
-    message:"",
+    // message:"",
     loading:false,
     user:null,
     token:null,
@@ -16,8 +15,8 @@ export const authSlice = createSlice({
     name:"auth",
     initialState,
     reducers:{
-        setMode:(state)=>{
-            const newmode = state.mode === "light" ? "Dark" : "light";
+        setMode:(state,action)=>{
+            const newmode = action.payload? action.payload : state.mode === "light" ? "Dark" : "light";
             state.mode = newmode
             localStorage.setItem("mode",newmode);
         },
@@ -25,9 +24,6 @@ export const authSlice = createSlice({
             state.user = null;
             state.token = null;
         },
-        setFriends:(state,action)=>{
-            
-        }
     },
      extraReducers:(builder)=>{
          builder
@@ -35,12 +31,12 @@ export const authSlice = createSlice({
              state.loading = true;
          })
          .addCase(registerUser.fulfilled,(state,action)=>{
-             const { message , user ,token, success} = action.payload;
+             const {user ,token, success} = action.payload;
              state.loading = false;
              state.status = success;
              state.user = user;
+             localStorage.setItem("user",JSON.stringify(user))
              localStorage.setItem("token",token)
-             // localStorage.setItem("user",user)
          })
          .addCase(registerUser.rejected,(state,action)=>{
              state.loading = false;
@@ -73,10 +69,8 @@ export const authSlice = createSlice({
              state.loading = true;
          })
          .addCase(editProfile.fulfilled,(state,action)=>{
-             // console.log("rdx editprofile payload",action.payload.data);
              const { user , message , suggestions } = action.payload;
              const {posts} = user;
-            //  console.log("rdx edit user is " ,user);
              state.message = message;
              state.loading = false;
             localStorage.setItem("user",JSON.stringify(user));
@@ -95,19 +89,18 @@ export const authSlice = createSlice({
          .addCase(searchProfileByName.fulfilled,(state,action)=>{
             state.loading = false;
             const {search} = action.payload;
-            console.log("search in rdx : ",search);
             state.search = search;
     
         })
         .addCase(searchProfileByName.rejected,(state,action)=>{
             state.loading = false;
             console.log("search ",action.payload);
-            
         })
     }
 })
 
-const API_PORT = "http://localhost:8080";
+const API_PORT = "https://batch-mate.onrender.com";
+// const API_PORT = "http://localhost:8080";
 
 export const registerUser = createAsyncThunk(
     "user/register",
@@ -145,13 +138,7 @@ export const loginUser = createAsyncThunk(
 export const editProfile = createAsyncThunk(
     "user/editprofile",
     async({id,formData},{rejectWithValue})=>{
-        const config = {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        }
        try {
-        console.log("editprofile is : ",id,formData);
         return await axios.put(`${API_PORT}/api/v1/auth/editprofile/${id}`,formData).then((response)=>response.data)
        } catch (error) {
         return rejectWithValue(error.response.data);

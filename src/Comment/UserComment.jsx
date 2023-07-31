@@ -5,9 +5,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PulseLoader from 'react-spinners/PulseLoader';
 
-const API_PORT = "http://localhost:8080";
+const API_PORT = "https://batch-mate.onrender.com";
 const override: CSSProperties = {
-    // display: "block",
     width:"3rem",
     display:"flex",
     height:"3rem",
@@ -16,10 +15,8 @@ const override: CSSProperties = {
     backgroundColor:"#1d2b3a",
     justifyContent:"center",
     alignItems:"center"
-    // backgroundColor:"#282c34"
   };
 const override1: CSSProperties = {
-    // display: "block",
     width:"100%",
     display:"flex",
     height:"100%",
@@ -27,7 +24,6 @@ const override1: CSSProperties = {
     backgroundColor:"#1d2b3a",
     justifyContent:"center",
     alignItems:"center"
-    // backgroundColor:"#282c34"
   };
 const UserComment = ({comment}) => {
 

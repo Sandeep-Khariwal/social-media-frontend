@@ -1,40 +1,51 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import me from "../../assets/me.jpg"
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserProfileById } from '../../state/user'
 import {io} from "socket.io-client"
 import { getMessages } from '../../state/Massanger'
 
-const Conversation = ({conver,myId,setChatId,setAllMessages,chatId}) =>{
+const Conversation = ({conver,myId,setChatId,setAllMessages,chatId,setShow,search,scrollUp}) =>{
   const {messages}= useSelector((state)=>state.messanger)
-  console.log("all is : ",chatId);
 
   const dispatch = useDispatch()
-  const {userProfile} = useSelector((state)=>state.user)
+  // const {userProfile} = useSelector((state)=>state.user)
+  const [user,setUser] = useState()
   useEffect(()=>{
-    const friendId = conver.filter((id)=> id !== myId);
-    dispatch(getUserProfileById({id:friendId,myid:myId}))
+    const user = localStorage.getItem("user")
+    const me = JSON.parse(user)
+    const friendId = conver.filter((id)=> id !== me?._id);
+    dispatch(getUserProfileById({id:friendId,myid:me?._id})).then((response)=>{
+      const {user}=response.payload;
+      setUser(user)
+    })
     setChatId(chatId)
   },[])
 
 const openChat = (e) =>{
   e.preventDefault()
+  scrollUp()
+  setShow((prev)=>!prev)
   
-  dispatch(getMessages(chatId)).then((response)=>{
-    // console.log("response is: ",response.payload);
-  })
+  dispatch(getMessages(chatId))
   // socket.current.emit("addUser", chatId)
   // socket.current.on("getMessage", (data) => {
   //   console.log("get data: ",data);
   // });
 }
 
-  return (
-    <div className='conversation' onClick={openChat} >
-      <img src={userProfile?.profilePic} alt='not found'/>
-      <span>{userProfile?.username}</span>
-    </div>
-  )
+  return ( <>
+   {search !== ""?
+    user?.username.includes(search)?<div className='conversation' onClick={openChat} >
+     <img src={user?.profilePic} alt='not found'/>
+     <span>{user?.username}</span>
+   </div> : ""
+    :<div className='conversation' onClick={openChat} >
+    <img src={user?.profilePic} alt='not found'/>
+    <span>{user?.username}</span>
+  </div>
+  }
+  </>)
 }
 
 export default Conversation

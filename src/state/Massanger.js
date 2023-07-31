@@ -13,7 +13,6 @@ export const messageSlice = createSlice({
     reducers:{
        setMessages:(state,action)=>{
          const messages = action.payload
-         console.log("setMEssage: ",messages);
          state.messages = [...state.messages,messages]
        }
     },
@@ -24,18 +23,13 @@ export const messageSlice = createSlice({
         })
         .addCase(createConversation.fulfilled,(state,action)=>{
              state.loading=false;
-             console.log("before create conver: ",action.payload);
-            //  if(action.payload.success){
              const {conversation} = action.payload;
              const members = conversation[0]?.members
-             console.log("after create conver: ",members);
              state.Conversations = members
-            //  }
         })
         .addCase(createConversation.rejected,(state,action)=>{
             state.loading=false;
-            // const {error} = action.payload
-            console.log("Error in suggestions ",action.payload);
+            console.log("Error in createConversation ",action.payload);
         })
         .addCase(getConversations.pending,(state)=>{
              state.loading=true;
@@ -47,7 +41,6 @@ export const messageSlice = createSlice({
         })
         .addCase(getConversations.rejected,(state,action)=>{
             state.loading=false;
-            // const {error} = action.payload
             console.log("Error in getConversations ",action.payload);
         })
         .addCase(sendMessage.pending,(state)=>{
@@ -60,7 +53,6 @@ export const messageSlice = createSlice({
         })
         .addCase(sendMessage.rejected,(state,action)=>{
             state.loading=false;
-            // const {error} = action.payload
             console.log("Error in getConversations ",action.payload);
         })
         .addCase(getMessages.pending,(state)=>{
@@ -73,13 +65,13 @@ export const messageSlice = createSlice({
         })
         .addCase(getMessages.rejected,(state,action)=>{
             state.loading=false;
-            // const {error} = action.payload
             console.log("Error in getConversations ",action.payload);
         })
     }
 })
 
-const API_PORT = "http://localhost:8080";
+const API_PORT = "https://batch-mate.onrender.com";
+// const API_PORT = "http://localhost:8080";
 
 export const createConversation = createAsyncThunk(
     "createConversation",
@@ -95,7 +87,6 @@ export const getConversations = createAsyncThunk(
     "getConversations",
      async(id,{rejectWithValue})=>{
         try {
-            console.log("id in rdx: ",id);
             return await axios.get(`${API_PORT}/api/v1/conversation/${id}`).then((response)=>response.data)
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -116,7 +107,6 @@ export const getMessages = createAsyncThunk(
     "getMessages",
      async(id,{rejectWithValue})=>{
         try {
-            console.log("chatid in rdx: ",id);
             return await axios.get(`${API_PORT}/api/v1/messages/${id}`).then((response)=>response.data)
         } catch (error) {
             return rejectWithValue(error.response.data);

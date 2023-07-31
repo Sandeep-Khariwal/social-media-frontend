@@ -15,7 +15,6 @@ export default function Message({ message, own,myPic }) {
         <p className="messageText">{message.text}</p>
       </div>
       <div className="messageBottom">{format(message.createdAt)}</div>
-      {/* {format(message.createdAt)} */}
     </div>
   );
 }

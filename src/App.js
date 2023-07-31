@@ -12,8 +12,12 @@ import { useEffect} from "react";
 import { useSelector } from "react-redux";
 import MyProfile from "./scenes/profile/MyProfile";
 import Notifications from "./scenes/homepage/Notifications";
-import CreatePosts from "./scenes/homepage/CreatePosts";
-
+import CreatePosts from "./Post/CreatePosts";
+import MyAllPosts from "./scenes/profile/MyAllPosts";
+import UserProfile from "./scenes/profile/UserProfile";
+import SavedPosts from "./Post/SavedPosts";
+import AllFriends from "./Friend/AllFriends";
+import Messanger from "./scenes/Massenger/Messanger";
 
 /* STYLING */
 import "./App.css"
@@ -42,11 +46,8 @@ import "./styles/Comment/usercomment.scss"
 
 import "./styles/messanger/messenger.scss"
 import "./styles/messanger/conversation.scss"
-import MyAllPosts from "./scenes/profile/MyAllPosts";
-import UserProfile from "./scenes/profile/UserProfile";
-import SavedPosts from "./scenes/navbar/SavedPosts";
-import AllFriends from "./Friend/AllFriends";
-import Messanger from "./scenes/Massenger/Messanger";
+import "./styles/post/likes.scss"
+import Likes from "./Post/Likes";
 
 
 const override: CSSProperties = {
@@ -91,6 +92,7 @@ function App() {
         <Route path="/savedposts" element={<SavedPosts/> } />
         <Route path="/friends" element={<AllFriends/> } />
         <Route path="/userprofile" element={<UserProfile/> }/>
+        <Route path="/likes" element={<Likes/> }/>
 
         <Route path="/messenger" element={<Messanger/> }/>
       </Routes>

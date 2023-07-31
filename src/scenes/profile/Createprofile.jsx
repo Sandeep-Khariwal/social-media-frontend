@@ -29,8 +29,6 @@ const Createprofile = () => {
   const navigate = useNavigate()
 
   const [user,setUser] = useState()
-  // const { _id , username , collegename , coursename , stream , address  } = user;
-  // console.log("id is",_id,username,collegename);
   const [name,setUsername] = useState("")
   const [bio , setBio] = useState("")
   const [look , setLook] = useState("")
@@ -53,7 +51,6 @@ const Createprofile = () => {
     const myDetails = localStorage.getItem("user");
     const user = JSON.parse(myDetails);
     const { _id , username , bio , look , collegename , coursename , stream , batch , address , skills , profilePic , BgPic } = user;
-    // setUser(user)
     setUsername(username);
     setCollegename(collegename);
     setCoursename(coursename);
@@ -63,8 +60,6 @@ const Createprofile = () => {
     setLook(look);
     setBatch(batch)
     setSkills(skills)
-    // setPhoto(profilePic)
-    // setBgphoto(BgPic)
     setPage(0)
   },[])
 
@@ -85,10 +80,7 @@ const Createprofile = () => {
   formData.append("profilePic",profilePic) 
   formData.append("BgPic",BgPic)
 
-    // id = id.toString();
-    console.log("data : ",formData);
     dispatch(editProfile({id,formData})).then((response)=>{
-      console.log("response is : ",response);
       const {success,message} = response?.payload;
           if(success){
             toast.success(message);
@@ -99,10 +91,7 @@ const Createprofile = () => {
             toast.error(message);
           }
     })
-    // navigate("/")
     }
-
-    console.log("pic name");
 
     const changePhoto = (e) =>{
       Picurl = window.URL.createObjectURL(e.target.files[0])
