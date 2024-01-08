@@ -16,9 +16,7 @@ import {
   setComments,
 } from "../state/user";
 import { letSavePosts } from "../state/post";
-
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 
 const override: CSSProperties = {
@@ -105,7 +103,7 @@ const Post = ({ post, bookMark }) => {
           : { backgroundColor: "#282c34", color: "#FAF9F6" }
       }
     >
-      <ToastContainer />
+      <Toaster />
       <div className="account">
         {post.userPhoto ? (
           <img src={post?.userPhoto} />
@@ -150,7 +148,7 @@ const Post = ({ post, bookMark }) => {
       <div className="desc">
         <p>{post?.description}</p>
       </div>
-      {imgLoad ? (
+      {imgLoad && photo ? (
         <PulseLoader
           color={color}
           size={40}
@@ -161,7 +159,7 @@ const Post = ({ post, bookMark }) => {
           data-testid="loader"
         />
       ) : (
-        <img src={photo} alt="not found" />
+        photo?<img src={photo} alt="not found" />:""
       )}
       <div className="social">
         <p onClick={()=>navigate("/likes",{state:{likes:likes}})} >{`${

@@ -1,9 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { DeletePost } from '../state/post';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -24,7 +22,7 @@ const PostThreeDot = ({id ,userId, setVisible}) => {
   }
     return (
     <>
-      <ToastContainer />
+      <Toaster/>
       <div className='barbuttons' onClick={()=>setVisible(false)} >
         <button onClick={deletePost} >Delete Post</button>
       </div>

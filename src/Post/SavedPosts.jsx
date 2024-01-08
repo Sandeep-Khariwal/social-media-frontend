@@ -3,9 +3,7 @@ import Bottomnav from '../scenes/navbar/Bottomnav'
 import Post from './Post'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSavePosts } from '../state/post'
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast, { Toaster } from 'react-hot-toast';
 
 var bookMark = true
 
@@ -31,7 +29,7 @@ const SavedPosts = () => {
 
   return (
     <div className='myallposts'  style={mode === 'light'? {backgroundColor:"#FAF9F6"}:{backgroundColor:"#282c34" , color:"white" }} >
-    <ToastContainer/>
+    <Toaster/>
     <h3>{post?.length > 0?`You have ${post?.length} Saved Posts`:"You Haven't Save any Post yet"}</h3>
       <div className='myposts'>
         <div className='posts' >

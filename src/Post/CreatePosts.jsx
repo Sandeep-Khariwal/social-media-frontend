@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {FaUserAlt} from "react-icons/fa"
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import Bottomnav from '../scenes/navbar/Bottomnav';
 import { InputElem } from '../component/InputElem';
 import { createPost } from '../state/post';
@@ -30,7 +30,10 @@ const CreatePosts = () => {
    const formData = new FormData();
    formData.append("photo",photo);
    formData.append("description",text);
-   dispatch(createPost({formData,id:user?._id})).then((response)=>{
+   if(!photo && !text){
+    toast.error("Add photo or text");
+   }
+  (photo || text) && dispatch(createPost({formData,id:user?._id})).then((response)=>{
     const {success,message,newUser} = response.payload;
     if(success){
       toast.success(message);
@@ -42,7 +45,7 @@ const CreatePosts = () => {
    });
   }
 
-  return (<><ToastContainer/>
+  return (<><Toaster/>
     <div className='createPost' style={mode === 'light'? {backgroundColor:"#FAF9F6",color:"black"}:{backgroundColor:"#282c34" , color:"#FAF9F6" } }  >
       
       <div className='input'>

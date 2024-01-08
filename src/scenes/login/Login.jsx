@@ -4,8 +4,7 @@ import {motion} from "framer-motion"
 import { Link, useNavigate } from 'react-router-dom'
 import { FaInstagram , FaFacebookSquare , FaLinkedin } from "react-icons/fa"
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser, setLogin } from '../../state'
 
@@ -14,7 +13,7 @@ const initalData = {email:"",password:""}
 const Login = () => {
 
   const dispatch = useDispatch();
-  const { status , user , message }= useSelector((state)=>state.auth)
+  const { status , user }= useSelector((state)=>state.auth)
   const navigate = useNavigate()
   const [data,setData] = useState(initalData);
 
@@ -26,20 +25,20 @@ const Login = () => {
     e.preventDefault();
 
     dispatch(loginUser(data)).then((response)=>{
-      const {success,message } = response.payload;
+      const {success} = response.payload;
       if(success){
-        toast.success(message);
+        // toast.success(message);
         setTimeout(()=>{
           navigate("/home")
         },[2000])
       } else{
-        toast.error(message);
+        // toast.error(message);
       }
       })
   }
 
   return (<>
-  <ToastContainer />
+  <Toaster />
     <div className='login' >
       <div className='loginInfo' >
         <h2>Find your career mate with Batch-mate App</h2>
@@ -74,7 +73,7 @@ const Login = () => {
         </div>
           <button onClick={onClickHandle} initial={{x:"+100%",opacity:0 }}whileInView={{x:"0%",opacity:1 }}transition={{delay:0.1,duration:0.4}}>Login</button>
           <button initial={{x:"+100%",opacity:0 }}whileInView={{x:"0%",opacity:1 }}transition={{delay:0.1,duration:0.2}} onClick={()=>{navigate("/register")}} >Sign Up</button>
-          <a href='/' initial={{y:"+100%",opacity:0 }}whileInView={{y:"0%",opacity:1 }}transition={{delay:0.1,duration:0.2}}>forgot password?</a>
+          {/* <a href='/' initial={{y:"+100%",opacity:0 }}whileInView={{y:"0%",opacity:1 }}transition={{delay:0.1,duration:0.2}}>forgot password?</a> */}
         </motion.form>
        </div>
       </div>

@@ -31,7 +31,7 @@ export const authSlice = createSlice({
              state.loading = true;
          })
          .addCase(registerUser.fulfilled,(state,action)=>{
-             const {user ,token, success} = action.payload;
+             const {user ,token, success, message} = action.payload;
              state.loading = false;
              state.status = success;
              state.user = user;
@@ -48,16 +48,16 @@ export const authSlice = createSlice({
          .addCase(loginUser.fulfilled,(state,action)=>{
              // console.log("payload",action.payload);
              if(action.payload){
-             const {token , message , user,suggestions} = action.payload;
+             const {token ,  user,suggestions} = action.payload;
              state.status = true;
              state.token = token;
              localStorage.setItem("token",token);
              localStorage.setItem("suggestion",JSON.stringify(suggestions))
-             state.message = message;
+            //  state.message = message;
              state.loading = false;
              state.user = user;
              localStorage.setItem("user",JSON.stringify(user));
-             }
+            }
     
          })
          .addCase(loginUser.rejected,(state,action)=>{

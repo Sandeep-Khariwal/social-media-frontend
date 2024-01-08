@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import toast, { Toaster } from 'react-hot-toast';
 // import { leaveCommentApi } from "../state/user";
 import { useDispatch, useSelector } from "react-redux";
 import UserComment from "./UserComment";
@@ -32,7 +32,7 @@ const Comment = ({ id, userId , comments , likes , setComments }) => {
 
   return (
     <div className="comments">
-      <ToastContainer />
+      <Toaster />
       <form>
         <input
           type="text"

@@ -24,9 +24,8 @@ const Profile = () => {
     setUser(JSON.parse(myDetails));
   },[])
 
-   
   return (
-    <section style={mode === 'light'? {backgroundColor:"#ffffff"}:{backgroundColor:"#222" , color:"white" }} >
+    <section style={mode === 'light'? {backgroundColor:"#FAF9F6",color:"black"}:{backgroundColor:"#282c34" , color:"#FAF9F6" } } >
       <Modal onCancel={()=>setVisible1(false)} footer={null} open={visible1}>
            <Profilepic profile={user?.profilePic} visible={visible1} />
       </Modal>
